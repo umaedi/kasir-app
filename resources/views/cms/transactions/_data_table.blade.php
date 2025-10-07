@@ -5,6 +5,7 @@
         <td>{{ formatRupiah($item->total_amount) }}</td>
         <td><button onclick='showItems(@json($item->items))' type="button" class="badge bg-primary">lihat item ({{ is_array($item->items) ? count($item->items) : 0 }})</button></td>
         <td>{{ \Carbon\Carbon::parse($item->transaction_date)->format('d-m-Y H:i:s') }}</td>
+        <td><a href="#" class="badge bg-danger" onclick="hapus('/cms/transactions/{{ $item->id }}')">hapus</a></td>
     </tr>
 @empty
     <x-dataNotFound colspan="5" />

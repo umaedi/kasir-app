@@ -154,6 +154,7 @@
                         <th scope="col">JUMLAH PEMBAYARAN</th>
                         <th scope="col">ITEM</th>
                         <th scope="col">WAKTU TRANSAKSI</th>
+                        <th scope="col">AKSI</th>
                         </tr>
                     </thead>
                     <tbody id="dataTable">
@@ -193,10 +194,10 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/apex-charts/apex-charts.css') }}" />
     <script type="text/javascript">
         $(document).ready(async function() {
-            getSummary();
+            dataTable();
         });
 
-        async function getSummary()
+        async function dataTable()
         {
             let param = {
                 url: '{{ url()->current() }}',

@@ -518,7 +518,7 @@
               </button>
             </div>
             <div class="col-6">
-              <button type="button" class="btn btn-lg btn-primary w-100" onclick="printStruk()">
+              <button type="button" class="btn btn-lg btn-primary w-100" onclick="printReceiptContent()">
                 <i class="bi bi-printer me-2"></i>Print Struk
               </button>
             </div>

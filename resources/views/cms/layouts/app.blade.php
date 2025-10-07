@@ -144,7 +144,6 @@
 
     <!-- Page JS -->
     <script type="text/javascript">
-        let dataTable = '';
         let btnSubmit = null;
         let btnLoading = null;
 
@@ -374,17 +373,17 @@
                     cache: false,
                 }
 
-                $("#loadingOverlay").removeClass('d-none');
+                // $("#loadingOverlay").removeClass('d-none');
                 await transAjax(param).then((response) => {
-                    dataTable.ajax.reload();
-                    $("#loadingOverlay").addClass('d-none');
+                    // $("#loadingOverlay").addClass('d-none');
+                    dataTable();
                     swal({
                         title: "Berhasil",
                         text: response.message,
                         icon: 'success',
                     });
                 }).catch((error) => {
-                    $("#loadingOverlay").addClass('d-none');
+                    // $("#loadingOverlay").addClass('d-none');
                     console.log(error);
                 });
             }

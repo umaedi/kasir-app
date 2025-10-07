@@ -518,7 +518,7 @@
               </button>
             </div>
             <div class="col-6">
-              <button type="button" class="btn btn-lg btn-primary w-100" onclick="printReceiptContent()">
+              <button type="button" class="btn btn-lg btn-primary w-100" onclick="printReceipt()">
                 <i class="bi bi-printer me-2"></i>Print Struk
               </button>
             </div>
@@ -1141,10 +1141,10 @@
 
     // Print receipt (tetap sama)
     function printReceipt() {
-        if (cart.length === 0) {
-            alert("Tidak ada transaksi untuk dicetak!");
-            return;
-        }
+        // if (cart.length === 0) {
+        //     alert("Tidak ada transaksi untuk dicetak!");
+        //     return;
+        // }
         generateReceipt();
         const modal = new bootstrap.Modal(document.getElementById("receiptModal"));
         modal.show();

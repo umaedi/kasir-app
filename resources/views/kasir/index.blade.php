@@ -19,6 +19,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
       rel="stylesheet"
     />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
 
     <style>
       :root {
@@ -287,16 +288,25 @@
         <!-- Kolom Produk -->
         <div class="col-lg-8 col-md-8 main-content">
           <div class="d-flex justify-content-between align-items-center mb-4">
-            <button class="btn btn-primary btn-lg"><i class="bi bi-arrows-fullscreen"></i></button>
+                    <!-- Fullscreen Toggle Button -->
+        {{-- <button class="btn btn-primary" id="fullscreenToggle" onclick="toggleFullscreen()">
+            <i class="fas fa-expand" id="fullscreenIcon"></i>
+            <div class="tooltip" id="fullscreenTooltip">
+                Mode Layar Penuh
+            </div>
+        </button> --}}
+            <button class="btn btn-primary btn-lg" id="fullscreenToggle" onclick="toggleFullscreen()">
+              <i class="bi bi-arrows-fullscreen"></i>
+            </button>
             <div class="d-flex gap-2">
               <button 
                 id="connectPrinterBtn" 
-                class="btn btn-outline-primary"
+                class="btn btn-outline-primary w-100"
                 title="Sambungkan ke Printer Thermal"
               >
                 <i class="bi bi-printer me-2"></i>Connect Printer
               </button>
-              <div class="input-group" style="width: 690px">
+              <div class="input-group">
                 <input
                   type="text"
                   id="searchInput"

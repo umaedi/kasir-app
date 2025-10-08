@@ -528,7 +528,7 @@
             </div>
 
             <!-- Metode Pembayaran -->
-            <div class="mb-4">
+            <div class="mb-3">
               <label class="form-label">Metode Pembayaran</label>
               <select class="form-select" id="paymentMethod">
                 <option selected>Pilih metode pembayaran</option>

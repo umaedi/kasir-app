@@ -10,7 +10,7 @@ export default defineConfig({
     }),
     tailwindcss(),
   ],
-  build: {
-    outDir: "../public_html/kasir-app",
-  },
+  //   build: {
+  //     outDir: "../public_html/kasir-app",
+  //   },
 });

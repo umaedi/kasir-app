@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import laravel from "laravel-vite-plugin";
-import path from "path";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   plugins: [
@@ -8,9 +8,9 @@ export default defineConfig({
       input: ["resources/css/app.css", "resources/js/app.js"],
       refresh: true,
     }),
+    tailwindcss(),
   ],
   build: {
-    outDir: path.resolve(__dirname, "../public_html/kasir-app/build"),
-    emptyOutDir: true,
+    outDir: "../public_html/kasir-app",
   },
 });

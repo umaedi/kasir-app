@@ -355,7 +355,7 @@
             <div
               id="cartItems"
               class="mb-4"
-              style="max-height: 450px; overflow-y: auto"
+              style="max-height: 400px; overflow-y: auto"
             >
               {{-- <p class="text-muted text-center">Keranjang kosong</p> --}}
             </div>
@@ -393,9 +393,9 @@
     </div>
 
     <!-- Status Printer -->
-    <div id="printerStatus" class="printer-status bg-secondary text-white d-none">
+    {{-- <div id="printerStatus" class="printer-status bg-secondary text-white d-none">
       <i class="bi bi-printer me-1"></i> Printer Disconnected
-    </div>
+    </div> --}}
 
     <!-- Receipt Modal -->
     <div class="modal fade" id="receiptModal" tabindex="-1">
@@ -679,7 +679,7 @@
                   throw new Error('Tidak ada perangkat yang dipilih');
               }
 
-              alert("Perangkat berhasil tersambung: " + device.name);
+              // alert("Perangkat berhasil tersambung: " + device.name);
               return device;
 
           } catch (error) {
@@ -715,22 +715,22 @@
        * Memperbarui status printer di UI
        */
       function updatePrinterStatus(message = '', type = 'secondary') {
-          const printerStatus = document.getElementById("printerStatus");
+          // const printerStatus = document.getElementById("printerStatus");
           const connectBtn = document.getElementById("connectPrinterBtn");
           
-          if (!printerStatus) return;
+          // if (!printerStatus) return;
 
           if (connectedPrinter) {
-              printerStatus.innerHTML = `<i class="bi bi-printer me-1"></i> Printer Connected`;
-              printerStatus.className = `printer-status bg-primary text-white`;
+              // printerStatus.innerHTML = `<i class="bi bi-printer me-1"></i> Printer Connected`;
+              // printerStatus.className = `printer-status bg-primary text-white`;
               if (connectBtn) {
-                  connectBtn.innerHTML = `<i class="bi bi-printer-check me-2"></i>Printer Ready`;
+                  connectBtn.innerHTML = `<i class="bi bi-printer me-2 Printer Ready`;
                   connectBtn.classList.remove('btn-outline-primary');
                   connectBtn.classList.add('btn-success');
               }
           } else {
-              printerStatus.innerHTML = `<i class="bi bi-printer me-1"></i> ${message || 'Printer Disconnected'}`;
-              printerStatus.className = `printer-status bg-${type} text-white`;
+              // printerStatus.innerHTML = `<i class="bi bi-printer me-1"></i> ${message || 'Printer Disconnected'}`;
+              // printerStatus.className = `printer-status bg-${type} text-white`;
               if (connectBtn) {
                   connectBtn.innerHTML = `<i class="bi bi-printer me-2"></i>Connect Printer`;
                   connectBtn.classList.remove('btn-success');
@@ -738,9 +738,9 @@
               }
           }
           
-          if (message) {
-              printerStatus.classList.remove("d-none");
-          }
+          // if (message) {
+          //     printerStatus.classList.remove("d-none");
+          // }
       }
 
       /**

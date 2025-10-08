@@ -38,7 +38,7 @@ class ProductSeeder extends Seeder
                 'stock' => 50,
                 'min_stock' => 10,
                 'category' => 'makanan',
-                'image' => '5ed5f39c7d8fe.jpg',
+                'image' => 'bakso-jumbo.jpg',
                 'attributes' => ['type' => 'makanan_berat', 'spicy_level' => 'medium']
             ],
             [
@@ -51,7 +51,7 @@ class ProductSeeder extends Seeder
                 'stock' => 50,
                 'min_stock' => 10,
                 'category' => 'makanan',
-                'image' => '5ed5f39c7d8fe.jpg',
+                'image' => 'bakso-tetelan.webp',
                 'attributes' => ['type' => 'makanan_berat', 'spicy_level' => 'medium']
             ],
             [
@@ -64,7 +64,7 @@ class ProductSeeder extends Seeder
                 'stock' => 50,
                 'min_stock' => 10,
                 'category' => 'makanan',
-                'image' => '5ed5f39c7d8fe.jpg',
+                'image' => 'bakso-urat.jpg',
                 'attributes' => ['type' => 'makanan_berat', 'spicy_level' => 'medium']
             ],
             [
@@ -77,7 +77,7 @@ class ProductSeeder extends Seeder
                 'stock' => 50,
                 'min_stock' => 10,
                 'category' => 'makanan',
-                'image' => '5ed5f39c7d8fe.jpg',
+                'image' => 'mie-ayam.webp',
                 'attributes' => ['type' => 'makanan_berat', 'spicy_level' => 'medium']
             ],
             // Minuman
@@ -132,7 +132,7 @@ class ProductSeeder extends Seeder
                 'stock' => 200,
                 'min_stock' => 40,
                 'category' => 'snack',
-                'image' => 'b4123fd43c938974dac47b1108c44cd8.jpeg',
+                'image' => 'somay.webp',
                 'attributes' => ['type' => 'snack', 'package' => 'small']
             ],
             [
@@ -145,7 +145,7 @@ class ProductSeeder extends Seeder
                 'stock' => 200,
                 'min_stock' => 40,
                 'category' => 'snack',
-                'image' => 'b4123fd43c938974dac47b1108c44cd8.jpeg',
+                'image' => 'empek-empek.webp',
                 'attributes' => ['type' => 'snack', 'package' => 'small']
             ],
             [
@@ -158,7 +158,7 @@ class ProductSeeder extends Seeder
                 'stock' => 200,
                 'min_stock' => 40,
                 'category' => 'snack',
-                'image' => 'b4123fd43c938974dac47b1108c44cd8.jpeg',
+                'image' => 'batagor.webp',
                 'attributes' => ['type' => 'snack', 'package' => 'small']
             ],
         ];

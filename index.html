@@ -3,1073 +3,321 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aplikasi Kasir POS</title>
-    <!-- Bootstrap 5 CSS -->
+    <title>Modal Pembayaran</title>
     <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <!-- Bootstrap Icons -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
-      rel="stylesheet"
-    />
-
     <style>
-      :root {
-        --primary-color: #0d46b4;
-        --primary-light: #1e5bc7;
-        --primary-dark: #0a3a96;
-      }
-
       body {
-        background-color: #f8f9fa;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      }
-
-      .primary-bg {
-        background-color: var(--primary-color) !important;
-      }
-
-      .primary-text {
-        color: var(--primary-color) !important;
-      }
-
-      .btn-primary {
-        background-color: var(--primary-color);
-        border-color: var(--primary-color);
-      }
-
-      .btn-primary:hover {
-        background-color: var(--primary-light);
-        border-color: var(--primary-light);
-      }
-
-      .category-nav {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
         justify-content: center;
-        position: sticky;
-        width: 50%;
-        bottom: 0;
-        z-index: 100;
-        background: white;
-        border-radius: 16px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        margin: 0 auto;
       }
 
-      .category-btn {
-        border: none;
-        background: transparent;
-        padding: 10px 20px;
-        border-radius: 12px;
-        margin: 5px;
-        transition: all 0.3s ease;
-        color: var(--primary-color);
-        font-weight: 500;
-      }
-
-      .category-btn.active {
-        background-color: var(--primary-color);
-        color: white;
-      }
-
-      .category-btn:hover {
-        background-color: var(--primary-light);
-        color: white;
-      }
-
-      .product-card {
-        transition: all 0.3s ease;
-        cursor: pointer;
-        border-radius: 12px;
-        overflow: hidden;
-      }
-
-      .product-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(13, 70, 180, 0.15);
-      }
-
-      .cart-item {
-        border-radius: 12px;
-        margin-bottom: 10px;
-        padding: 15px;
-        background: white;
-        border: 1px solid #0a3a96;
-      }
-
-      .search-box {
-        border-radius: 16px;
-        border: 2px solid var(--primary-color);
-        padding: 12px 20px;
-      }
-
-      .search-box:focus {
-        box-shadow: 0 0 0 0.25rem rgba(13, 70, 180, 0.25);
-        border-color: var(--primary-color);
-      }
-
-      .calculator {
-        background: white;
-        border-radius: 16px;
-        padding: 20px;
-      }
-
-      .calc-display {
-        background: #f8f9fa;
-        border-radius: 12px;
-        padding: 15px;
-        text-align: right;
-        font-size: 24px;
-        font-weight: bold;
-        margin-bottom: 15px;
-      }
-
-      .calc-btn {
-        width: 100%;
-        height: 50px;
-        border-radius: 12px;
-        border: none;
-        margin: 5px 0;
-        font-size: 18px;
-        font-weight: bold;
-        transition: all 0.3s ease;
-      }
-
-      .calc-btn:hover {
-        transform: scale(1.05);
-      }
-
-      .calc-btn.number {
-        background: #e9ecef;
-        color: #495057;
-      }
-
-      .calc-btn.operator {
-        background: var(--primary-color);
-        color: white;
-      }
-
-      .receipt-section {
-        background: white;
-        border-radius: 16px;
-        padding: 20px;
-        margin-top: 20px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      }
-
-      .receipt-paper {
-        background: white;
-        padding: 20px;
-        font-family: "Courier New", monospace;
-        border: 1px dashed #ccc;
-        max-height: 400px;
-        overflow-y: auto;
-      }
-
-      .sync-status {
-        position: fixed;
-        bottom: 10px;
-        right: 10px;
-        padding: 8px 15px;
+      .modal-content {
         border-radius: 20px;
-        font-size: 12px;
-        z-index: 1000;
+        border: none;
       }
 
-      @media print {
-        body * {
-          visibility: hidden;
-        }
-        .receipt-paper,
-        .receipt-paper * {
-          visibility: visible;
-        }
-        .receipt-paper {
-          position: absolute;
-          left: 0;
-          top: 0;
-          width: 100%;
-        }
-      }
-
-      .sidebar {
-        height: 100vh;
-        overflow-y: auto;
-        background: white;
-        border-radius: 16px 0 0 16px;
-      }
-
-      .main-content {
-        height: 100vh;
-        overflow-y: auto;
+      .info-card {
+        border-radius: 15px;
         padding: 20px;
+        margin-bottom: 20px;
+      }
+
+      .total-belanja {
+        background: linear-gradient(135deg, #4c8bf5 0%, #5a9dff 100%);
+        color: white;
+      }
+
+      .kembalian {
+        background: linear-gradient(135deg, #ff9f43 0%, #ffb74d 100%);
+        color: white;
+      }
+
+      .info-card h6 {
+        font-size: 12px;
+        margin-bottom: 5px;
+        opacity: 0.9;
+      }
+
+      .info-card h2 {
+        font-size: 36px;
+        font-weight: 700;
+        margin: 0;
+      }
+
+      .form-label {
+        color: #333;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+
+      .form-control,
+      .form-select {
+        border-radius: 10px;
+        border: 1px solid #e0e0e0;
+        padding: 12px 15px;
+        background-color: #f5f5f5;
+      }
+
+      .nominal-btn {
+        border-radius: 10px;
+        padding: 12px;
+        border: 1px solid #e0e0e0;
+        background-color: #f8f9fa;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-weight: 600;
+      }
+
+      .nominal-btn:hover {
+        background-color: #e9ecef;
+        border-color: #4c8bf5;
+      }
+
+      .btn-batal {
+        background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
+        color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 15px;
+        font-weight: 600;
+        font-size: 16px;
+      }
+
+      .btn-bayar {
+        background: linear-gradient(135deg, #51cf66 0%, #5eead4 100%);
+        color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 15px;
+        font-weight: 600;
+        font-size: 16px;
+      }
+
+      .btn-batal:hover {
+        background: linear-gradient(135deg, #ff5252 0%, #ff4444 100%);
+      }
+
+      .btn-bayar:hover {
+        background: linear-gradient(135deg, #40c057 0%, #4dd4ac 100%);
+      }
+
+      .nominal-bayar-label {
+        font-size: 24px;
+        font-weight: 400;
+        color: #666;
+      }
+
+      .error-text {
+        color: #ff6b6b;
+        font-size: 12px;
+        margin-top: 5px;
       }
     </style>
   </head>
   <body>
-    <div class="container-fluid">
-      <div class="row">
-        <!-- Kolom Produk -->
-        <div class="col-lg-8 main-content">
-          <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2 class="primary-text fw-bold">Kasir tokokita</h2>
-            <div class="d-flex gap-2">
-              <div class="input-group" style="width: 300px">
+    <!-- Button trigger modal -->
+    <button
+      type="button"
+      class="btn btn-primary btn-lg"
+      data-bs-toggle="modal"
+      data-bs-target="#modalPembayaran"
+    >
+      Buka Modal Pembayaranx
+    </button>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="modalPembayaran"
+      tabindex="-1"
+      aria-labelledby="modalPembayaranLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body p-3">
+            <!-- Info Cards -->
+            <div class="row">
+              <div class="col-md-6">
+                <div class="info-card total-belanja">
+                  <h5>Total Belanja</h5>
+                  <h3>Rp 24.000</h3>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="info-card kembalian">
+                  <h5>Kembalian</h5>
+                  <h3 id="kembalianAmount">Rp 0</h3>
+                </div>
+              </div>
+            </div>
+            <!-- Nama Customer & Nominal Bayar -->
+            <div class="row">
+              <div class="col-md-6">
+                <label class="form-label">Nama Customer</label>
                 <input
                   type="text"
-                  id="searchInput"
-                  class="form-control search-box border-end-0"
-                  placeholder="Cari produk..."
+                  class="form-control"
+                  value="Umum"
+                  placeholder="Masukkan nama customer"
                 />
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Nominal Bayar</label>
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1">Rp</span>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="nominalBayar"
+                    placeholder="0"
+                    min="0"
+                  />
+                </div>
+                <div id="errorMessage" class="error-text" style="display: none">
+                  Please fill out this field.
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Amount Buttons -->
+            <div class="row g-2 mb-3">
+              <div class="col-4">
+                <button class="nominal-btn w-100" onclick="setNominal(2000)">
+                  2.000
+                </button>
+              </div>
+              <div class="col-4">
+                <button class="nominal-btn w-100" onclick="setNominal(5000)">
+                  5.000
+                </button>
+              </div>
+              <div class="col-4">
+                <button class="nominal-btn w-100" onclick="setNominal(10000)">
+                  10.000
+                </button>
+              </div>
+              <div class="col-4">
+                <button class="nominal-btn w-100" onclick="setNominal(20000)">
+                  20.000
+                </button>
+              </div>
+              <div class="col-4">
+                <button class="nominal-btn w-100" onclick="setNominal(50000)">
+                  50.000
+                </button>
+              </div>
+              <div class="col-4">
+                <button class="nominal-btn w-100" onclick="setNominal(100000)">
+                  100.000
+                </button>
+              </div>
+            </div>
+
+            <!-- Metode Pembayaran -->
+            <div class="mb-4">
+              <label class="form-label">Metode Pembayaran</label>
+              <select class="form-select">
+                <option selected>Pilih metode pembayaran</option>
+                <option value="1">Tunai</option>
+                <option value="2">Kartu Debit</option>
+                <option value="3">Kartu Kredit</option>
+                <option value="4">E-Wallet</option>
+                <option value="5">Transfer Bank</option>
+              </select>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="row g-3">
+              <div class="col-md-6">
                 <button
-                  class="btn btn-outline-secondary border-start-0 bg-white"
                   type="button"
+                  class="btn btn-batal w-100"
+                  data-bs-dismiss="modal"
                 >
-                  <i class="bi bi-upc-scan fs-5 primary-text"></i>
+                  Batal
                 </button>
               </div>
-            </div>
-          </div>
-
-          <!-- Grid Produk -->
-          <div class="row" id="productGrid">
-            <!-- Products will be generated by JavaScript -->
-          </div>
-
-          <!-- Navigasi Kategori -->
-          <div class="category-nav p-3 mt-4">
-            <div class="d-flex justify-content-center">
-              <button
-                class="category-btn active"
-                onclick="filterProducts('all')"
-              >
-                Semua
-              </button>
-              <button class="category-btn" onclick="filterProducts('makanan')">
-                Makanan
-              </button>
-              <button class="category-btn" onclick="filterProducts('minuman')">
-                Minuman
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Kolom Keranjang -->
-        <div class="col-lg-4 sidebar p-0">
-          <div class="p-4">
-            <h4 class="primary-text fw-bold mb-4">Keranjang Belanja</h4>
-
-            <!-- Cart Items -->
-            <div
-              id="cartItems"
-              class="mb-4"
-              style="max-height: 300px; overflow-y: auto"
-            >
-              <p class="text-muted text-center">Keranjang kosong</p>
-            </div>
-
-            <!-- Total sticky -->
-            <div
-              class="border-top pt-3 mb-3 bg-white p-2"
-              style="position: sticky; top: 0; z-index: 10"
-            >
-              <div
-                class="d-flex justify-content-between fw-bold fs-5 primary-text"
-              >
-                <span>Total:</span>
-                <span id="totalPrice">Rp 0</span>
-              </div>
-            </div>
-
-            <!-- Kalkulator Pembayaran -->
-            <div class="calculator mt-4">
-              <h6 class="primary-text fw-bold mb-3">Kalkulator Pembayaran</h6>
-
-              <div class="calc-display" id="calcDisplay">0</div>
-
-              <div class="row g-2">
-                <div class="col-3">
-                  <button class="calc-btn operator" onclick="clearCalc()">
-                    C
-                  </button>
-                </div>
-                <div class="col-3">
-                  <button class="calc-btn operator" onclick="deleteCalc()">
-                    ⌫
-                  </button>
-                </div>
-                <div class="col-3">
-                  <button class="calc-btn operator" onclick="addToCalc('/')">
-                    ÷
-                  </button>
-                </div>
-                <div class="col-3">
-                  <button class="calc-btn operator" onclick="addToCalc('*')">
-                    ×
-                  </button>
-                </div>
-
-                <div class="col-3">
-                  <button class="calc-btn number" onclick="addToCalc('9')">
-                    9
-                  </button>
-                </div>
-                <div class="col-3">
-                  <button class="calc-btn number" onclick="addToCalc('8')">
-                    8
-                  </button>
-                </div>
-                <div class="col-3">
-                  <button class="calc-btn number" onclick="addToCalc('7')">
-                    7
-                  </button>
-                </div>
-                <div class="col-3">
-                  <button class="calc-btn operator" onclick="addToCalc('-')">
-                    -
-                  </button>
-                </div>
-
-                <div class="col-3">
-                  <button class="calc-btn number" onclick="addToCalc('6')">
-                    6
-                  </button>
-                </div>
-                <div class="col-3">
-                  <button class="calc-btn number" onclick="addToCalc('5')">
-                    5
-                  </button>
-                </div>
-                <div class="col-3">
-                  <button class="calc-btn number" onclick="addToCalc('4')">
-                    4
-                  </button>
-                </div>
-                <div class="col-3">
-                  <button class="calc-btn operator" onclick="addToCalc('+')">
-                    +
-                  </button>
-                </div>
-                <div class="col-3">
-                  <button class="calc-btn number" onclick="addToCalc('3')">
-                    3
-                  </button>
-                </div>
-                <div class="col-3">
-                  <button class="calc-btn number" onclick="addToCalc('2')">
-                    2
-                  </button>
-                </div>
-                <div class="col-3">
-                  <button class="calc-btn number" onclick="addToCalc('1')">
-                    1
-                  </button>
-                </div>
-                <div class="col-3">
-                  <button class="calc-btn operator" onclick="calculateResult()">
-                    =
-                  </button>
-                </div>
-                <div class="col-3">
-                  <button class="calc-btn number" onclick="addToCalc('0')">
-                    0
-                  </button>
-                </div>
-                <div class="col-3">
-                  <button class="calc-btn number" onclick="addToCalc('00')">
-                    00
-                  </button>
-                </div>
-                <div class="col-3">
-                  <button class="calc-btn number" onclick="addToCalc('000')">
-                    000
-                  </button>
-                </div>
-              </div>
-              <div class="mt-3">
+              <div class="col-md-6">
                 <button
-                  class="btn btn-outline-primary w-100 mb-2"
-                  onclick="setPaymentFromCalc()"
+                  type="button"
+                  class="btn btn-bayar w-100"
+                  onclick="prosesPembayaran()"
                 >
-                  Set Pembayaran: <span id="calcValue">Rp 0</span>
+                  Bayar
                 </button>
-
-                <div class="d-flex justify-content-between">
-                  <span>Dibayar:</span>
-                  <span id="paidAmount" class="fw-bold">Rp 0</span>
-                </div>
-                <div class="d-flex justify-content-between">
-                  <span>Kembalian:</span>
-                  <span id="changeAmount" class="fw-bold text-success"
-                    >Rp 0</span
-                  >
-                </div>
               </div>
             </div>
-
-            <!-- Tombol Aksi -->
-            <div class="mt-3">
-              <button
-                class="btn btn-success w-100 mb-2 fw-bold"
-                onclick="processPayment()"
-              >
-                <i class="bi bi-check-circle me-2"></i>Proses Pembayaran
-              </button>
-              <button
-                class="btn btn-outline-primary w-100 mb-2"
-                onclick="printReceipt()"
-              >
-                <i class="bi bi-printer me-2"></i>Print Struk
-              </button>
-              <!-- <button
-                class="btn btn-outline-danger w-100"
-                onclick="clearCart()"
-              >
-                <i class="bi bi-trash me-2"></i>Clear Keranjang
-              </button> -->
-            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Status Sinkronisasi -->
-    <div id="syncStatus" class="sync-status bg-secondary text-white d-none">
-      <i class="bi bi-arrow-repeat me-1"></i> Menyinkronkan...
-    </div>
-
-    <!-- Receipt Modal -->
-    <div class="modal fade" id="receiptModal" tabindex="-1">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Struk Pembayaran</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <div class="receipt-paper" id="receiptContent">
-              <!-- Receipt content will be generated here -->
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-primary"
-              onclick="printReceiptContent()"
-            >
-              <i class="bi bi-printer me-2"></i>Print
-            </button>
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Tutup
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Bootstrap 5 JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-      // Data produk contoh
-      const products = [
-        {
-          id: 1,
-          name: "Nasi Gudeg",
-          price: 15000,
-          category: "makanan",
-          image: "./resep-sop-bakso-1998146114.webp",
-        },
-        {
-          id: 2,
-          name: "Soto Ayam",
-          price: 12000,
-          category: "makanan",
-          image: "./resep-sop-bakso-1998146114.webp",
-        },
-        {
-          id: 3,
-          name: "Gado-gado",
-          price: 10000,
-          category: "makanan",
-          image: "./resep-sop-bakso-1998146114.webp",
-        },
-        {
-          id: 4,
-          name: "Es Teh Manis",
-          price: 5000,
-          category: "minuman",
-          image: "./resep-sop-bakso-1998146114.webp",
-        },
-        {
-          id: 5,
-          name: "Jus Jeruk",
-          price: 8000,
-          category: "minuman",
-          image: "./resep-sop-bakso-1998146114.webp",
-        },
-        {
-          id: 6,
-          name: "Kopi Hitam",
-          price: 6000,
-          category: "minuman",
-          image: "./resep-sop-bakso-1998146114.webp",
-        },
-        {
-          id: 7,
-          name: "Kerupuk",
-          price: 3000,
-          category: "lainnya",
-          image: "./resep-sop-bakso-1998146114.webp",
-        },
-        {
-          id: 8,
-          name: "Sambal",
-          price: 2000,
-          category: "lainnya",
-          image: "./resep-sop-bakso-1998146114.webp",
-        },
-      ];
+      const totalBelanja = 24000;
 
-      let cart = [];
-      let currentCategory = "all";
-      let calculatorValue = "0";
-      let paidAmount = 0;
-      let db = null;
-      let syncInterval = null;
-      let pendingTransactions = [];
-
-      // Initialize app
-      window.onload = function () {
-        initDatabase();
-        displayProducts();
-        updateCartDisplay();
-        updateCalculatorDisplay();
-      };
-
-      // Initialize IndexedDB
-      function initDatabase() {
-        const request = indexedDB.open("POSDatabase", 1);
-
-        request.onerror = function (event) {
-          console.error("Database error: " + event.target.errorCode);
-        };
-
-        request.onsuccess = function (event) {
-          db = event.target.result;
-          startSyncInterval();
-          console.log("Database initialized successfully");
-        };
-
-        request.onupgradeneeded = function (event) {
-          db = event.target.result;
-          const objectStore = db.createObjectStore("transactions", {
-            keyPath: "id",
-            autoIncrement: true,
-          });
-          objectStore.createIndex("timestamp", "timestamp", { unique: false });
-          objectStore.createIndex("synced", "synced", { unique: false });
-          console.log("Database setup complete");
-        };
+      function formatRupiah(angka) {
+        return "Rp " + angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
       }
 
-      // Save transaction to IndexedDB
-      function saveTransactionToDB(transaction) {
-        if (!db) {
-          console.error("Database not initialized");
-          return;
-        }
+      function hitungKembalian() {
+        const nominalBayar =
+          parseInt(document.getElementById("nominalBayar").value) || 0;
+        const kembalian = nominalBayar - totalBelanja;
 
-        const transactionDB = db.transaction(["transactions"], "readwrite");
-        const objectStore = transactionDB.objectStore("transactions");
-        const request = objectStore.add({
-          ...transaction,
-          timestamp: new Date().toISOString(),
-          synced: false,
-        });
-
-        request.onsuccess = function () {
-          console.log("Transaction saved to IndexedDB");
-        };
-
-        request.onerror = function (event) {
-          console.error("Error saving transaction: " + event.target.errorCode);
-        };
-      }
-
-      function getUnsyncedTransactions() {
-        return new Promise((resolve, reject) => {
-          if (!db) {
-            reject("Database not initialized");
-            return;
-          }
-
-          const transaction = db.transaction(["transactions"], "readonly");
-          const objectStore = transaction.objectStore("transactions");
-          const index = objectStore.index("synced");
-
-          // Pakai IDBKeyRange.only(false) untuk filter synced === false
-          // const keyRange = IDBKeyRange.only(false);
-          const request = index.getAll();
-
-          const allRequest = objectStore.getAll();
-          allRequest.onsuccess = function () {
-            console.log("All transactions:", allRequest.result);
-          };
-
-          console.log("req", request);
-
-          request.onsuccess = function () {
-            resolve(request.result);
-          };
-
-          request.onerror = function (event) {
-            reject(
-              "Error getting unsynced transactions: " + event.target.errorCode
-            );
-          };
-        });
-      }
-
-      // Mark transaction as synced
-      function markTransactionAsSynced(id) {
-        return new Promise((resolve, reject) => {
-          if (!db) {
-            reject("Database not initialized");
-            return;
-          }
-
-          const transaction = db.transaction(["transactions"], "readwrite");
-          const objectStore = transaction.objectStore("transactions");
-          const request = objectStore.get(id);
-
-          request.onsuccess = function () {
-            const data = request.result;
-            data.synced = true;
-            const updateRequest = objectStore.put(data);
-
-            updateRequest.onsuccess = function () {
-              resolve();
-            };
-
-            updateRequest.onerror = function (event) {
-              reject("Error updating transaction: " + event.target.errorCode);
-            };
-          };
-
-          request.onerror = function (event) {
-            reject("Error getting transaction: " + event.target.errorCode);
-          };
-        });
-      }
-
-      // Sync transactions to server
-      async function syncToServer() {
-        try {
-          const unsyncedTransactions = await getUnsyncedTransactions();
-
-          if (unsyncedTransactions.length === 0) {
-            updateSyncStatus("Tersinkron", "success");
-            return;
-          }
-
-          updateSyncStatus("Menyinkronkan...", "warning");
-
-          // Simulate API call to server
-          for (const transaction of unsyncedTransactions) {
-            // In a real application, you would send this to your server
-            console.log("Sending transaction to server:", transaction);
-
-            // Simulate API delay
-            await new Promise((resolve) => setTimeout(resolve, 500));
-
-            // Mark as synced after successful API call
-            await markTransactionAsSynced(transaction.id);
-          }
-
-          updateSyncStatus("Tersinkron", "success");
-          console.log("All transactions synced successfully");
-        } catch (error) {
-          console.error("Sync error:", error);
-          updateSyncStatus("Gagal sinkron", "danger");
-        }
-      }
-
-      // Update sync status display
-      function updateSyncStatus(message, type) {
-        const syncStatus = document.getElementById("syncStatus");
-        syncStatus.textContent = message;
-        syncStatus.className = `sync-status bg-${type} text-white`;
-
-        if (type === "success") {
-          setTimeout(() => {
-            syncStatus.classList.add("d-none");
-          }, 3000);
+        if (kembalian >= 0) {
+          document.getElementById("kembalianAmount").textContent =
+            formatRupiah(kembalian);
+          document.getElementById("errorMessage").style.display = "none";
         } else {
-          syncStatus.classList.remove("d-none");
+          document.getElementById("kembalianAmount").textContent = "Rp 0";
         }
       }
 
-      // Start sync interval (every 3 minutes)
-      function startSyncInterval() {
-        // Sync immediately on startup
-        syncToServer();
-
-        // Then sync every 3 minutes
-        syncInterval = setInterval(syncToServer, 1 * 60 * 1000);
+      function setNominal(amount) {
+        document.getElementById("nominalBayar").value = amount;
+        hitungKembalian();
       }
 
-      // Display products
-      function displayProducts() {
-        const productGrid = document.getElementById("productGrid");
-        const searchTerm = document
-          .getElementById("searchInput")
-          .value.toLowerCase();
-
-        const filteredProducts = products.filter((product) => {
-          const matchesCategory =
-            currentCategory === "all" || product.category === currentCategory;
-          const matchesSearch = product.name.toLowerCase().includes(searchTerm);
-          return matchesCategory && matchesSearch;
-        });
-
-        productGrid.innerHTML = filteredProducts
-          .map(
-            (product) => `
-                <div class="col-md-4 col-lg-3 mb-4">
-                    <div class="card product-card h-100" onclick="addToCart(${
-                      product.id
-                    })">
-                        <img src="${product.image}" class="card-img-top" alt="${
-              product.name
-            }" style="height: 150px; object-fit: cover;">
-                        <div class="card-body d-flex flex-column">
-                            <h6 class="card-title">${product.name}</h6>
-                            <p class="card-text text-muted small">${
-                              product.category
-                            }</p>
-                            <div class="mt-auto">
-                                <span class="fw-bold primary-text fs-5">${formatCurrency(
-                                  product.price
-                                )}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `
-          )
-          .join("");
-      }
-
-      // Filter products by category
-      function filterProducts(category) {
-        currentCategory = category;
-
-        // Update active button
-        document
-          .querySelectorAll(".category-btn")
-          .forEach((btn) => btn.classList.remove("active"));
-        event.target.classList.add("active");
-
-        displayProducts();
-      }
-
-      // Add to cart
-      function addToCart(productId) {
-        const product = products.find((p) => p.id === productId);
-        const existingItem = cart.find((item) => item.id === productId);
-
-        if (existingItem) {
-          existingItem.quantity += 1;
-        } else {
-          cart.push({ ...product, quantity: 1 });
-        }
-
-        updateCartDisplay();
-      }
-
-      // Update cart display
-      function updateCartDisplay() {
-        const cartItems = document.getElementById("cartItems");
-        const totalPrice = document.getElementById("totalPrice");
-
-        if (cart.length === 0) {
-          cartItems.innerHTML =
-            '<p class="text-muted text-center">Keranjang kosong</p>';
-          totalPrice.textContent = "Rp 0";
-          updatePaymentCalculation();
-          return;
-        }
-
-        cartItems.innerHTML = cart
-          .map(
-            (item) => `
-                <div class="cart-item">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <h6 class="mb-1">${item.name}</h6>
-                            <small class="text-muted">${formatCurrency(
-                              item.price
-                            )} each</small>
-                        </div>
-                        <div class="d-flex align-items-center gap-2">
-                            <button class="btn btn-sm btn-outline-danger" onclick="updateQuantity(${
-                              item.id
-                            }, -1)">-</button>
-                            <span class="fw-bold">${item.quantity}</span>
-                            <button class="btn btn-sm btn-outline-success" onclick="updateQuantity(${
-                              item.id
-                            }, 1)">+</button>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center mt-2">
-                        <span class="fw-bold">${formatCurrency(
-                          item.price * item.quantity
-                        )}</span>
-                        <button class="btn btn-sm btn-outline-danger" onclick="removeFromCart(${
-                          item.id
-                        })">
-                            <i class="bi bi-trash"></i>
-                        </button>
-                    </div>
-                </div>
-            `
-          )
-          .join("");
-
-        const total = cart.reduce(
-          (sum, item) => sum + item.price * item.quantity,
-          0
-        );
-        totalPrice.textContent = formatCurrency(total);
-        updatePaymentCalculation();
-      }
-
-      // Update quantity
-      function updateQuantity(productId, change) {
-        const item = cart.find((item) => item.id === productId);
-        if (item) {
-          item.quantity += change;
-          if (item.quantity <= 0) {
-            removeFromCart(productId);
-          } else {
-            updateCartDisplay();
-          }
-        }
-      }
-
-      // Remove from cart
-      function removeFromCart(productId) {
-        cart = cart.filter((item) => item.id !== productId);
-        updateCartDisplay();
-      }
-
-      // Clear cart
-      function clearCart() {
-        cart = [];
-        paidAmount = 0;
-        updateCartDisplay();
-      }
-
-      // Calculator functions
-      function addToCalc(value) {
-        if (calculatorValue === "0") {
-          calculatorValue = value;
-        } else {
-          calculatorValue += value;
-        }
-        updateCalculatorDisplay();
-      }
-
-      function clearCalc() {
-        calculatorValue = "0";
-        updateCalculatorDisplay();
-      }
-
-      function deleteCalc() {
-        calculatorValue = calculatorValue.slice(0, -1) || "0";
-        updateCalculatorDisplay();
-      }
-
-      function calculateResult() {
-        try {
-          calculatorValue = eval(
-            calculatorValue.replace("×", "*").replace("÷", "/")
-          ).toString();
-        } catch (e) {
-          calculatorValue = "0";
-        }
-        updateCalculatorDisplay();
-      }
-
-      function updateCalculatorDisplay() {
-        document.getElementById("calcDisplay").textContent = calculatorValue;
-        const numValue = parseFloat(calculatorValue) || 0;
-        document.getElementById("calcValue").textContent =
-          formatCurrency(numValue);
-      }
-
-      function setPaymentFromCalc() {
-        paidAmount = parseFloat(calculatorValue) || 0;
-        updatePaymentCalculation();
-      }
-
-      function updatePaymentCalculation() {
-        const total = cart.reduce(
-          (sum, item) => sum + item.price * item.quantity,
-          0
-        );
-        const change = paidAmount - total;
-
-        document.getElementById("paidAmount").textContent =
-          formatCurrency(paidAmount);
-        document.getElementById("changeAmount").textContent = formatCurrency(
-          Math.max(0, change)
-        );
-      }
-
-      // Process payment
-      function processPayment() {
-        const total = cart.reduce(
-          (sum, item) => sum + item.price * item.quantity,
-          0
-        );
-
-        if (cart.length === 0) {
-          alert("Keranjang kosong!");
-          return;
-        }
-
-        if (paidAmount < total) {
-          alert("Pembayaran kurang! Silakan masukkan jumlah yang tepat.");
-          return;
-        }
-
-        // Create transaction object
-        const transaction = {
-          id: Date.now() + Math.random().toString(36).substr(2, 9),
-          items: [...cart],
-          total: total,
-          paid: paidAmount,
-          change: paidAmount - total,
-          timestamp: new Date().toISOString(),
-        };
-
-        // Save to IndexedDB
-        saveTransactionToDB(transaction);
-
-        alert("Pembayaran berhasil diproses!");
-        generateReceipt();
-        clearCart();
-
-        // Trigger sync immediately after payment
-        // syncToServer();
-      }
-
-      // Generate receipt
-      function generateReceipt() {
-        const now = new Date();
-        const total = cart.reduce(
-          (sum, item) => sum + item.price * item.quantity,
-          0
-        );
-        const change = paidAmount - total;
-
-        const receiptHTML = `
-                <div class="text-center mb-3">
-                    <h4>TOKO SUMBER REJEKI</h4>
-                    <small>Jl. Contoh No. 123, Jakarta<br>
-                    Tel: 021-1234567</small>
-                </div>
-                <hr>
-                <div class="text-center mb-2">
-                    <small>No: ${Math.random()
-                      .toString(36)
-                      .substr(2, 9)
-                      .toUpperCase()}<br>
-                    ${now.toLocaleDateString("id-ID")} ${now.toLocaleTimeString(
-          "id-ID"
-        )}</small>
-                </div>
-                <hr>
-                ${cart
-                  .map(
-                    (item) => `
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            ${item.name}<br>
-                            <small>${item.quantity} x ${formatCurrency(
-                      item.price
-                    )}</small>
-                        </div>
-                        <div>${formatCurrency(item.price * item.quantity)}</div>
-                    </div>
-                `
-                  )
-                  .join("<br>")}
-                <hr>
-                <div class="d-flex justify-content-between">
-                    <strong>TOTAL</strong>
-                    <strong>${formatCurrency(total)}</strong>
-                </div>
-                <div class="d-flex justify-content-between">
-                    <span>BAYAR</span>
-                    <span>${formatCurrency(paidAmount)}</span>
-                </div>
-                <div class="d-flex justify-content-between">
-                    <span>KEMBALI</span>
-                    <span>${formatCurrency(change)}</span>
-                </div>
-                <hr>
-                <div class="text-center">
-                    <small>TERIMA KASIH<br>ATAS KUNJUNGAN ANDA</small>
-                </div>
-            `;
-
-        document.getElementById("receiptContent").innerHTML = receiptHTML;
-      }
-
-      // Print receipt
-      function printReceipt() {
-        if (cart.length === 0) {
-          alert("Tidak ada transaksi untuk dicetak!");
-          return;
-        }
-
-        generateReceipt();
-        const modal = new bootstrap.Modal(
-          document.getElementById("receiptModal")
-        );
-        modal.show();
-      }
-
-      function printReceiptContent() {
-        window.print();
-      }
-
-      // Search functionality
       document
-        .getElementById("searchInput")
-        .addEventListener("input", displayProducts);
+        .getElementById("nominalBayar")
+        .addEventListener("input", hitungKembalian);
 
-      // Format currency
-      function formatCurrency(amount) {
-        return new Intl.NumberFormat("id-ID", {
-          style: "currency",
-          currency: "IDR",
-          minimumFractionDigits: 0,
-          maximumFractionDigits: 0,
-        }).format(amount);
+      function prosesPembayaran() {
+        const nominalBayar =
+          parseInt(document.getElementById("nominalBayar").value) || 0;
+
+        if (nominalBayar === 0) {
+          document.getElementById("errorMessage").style.display = "block";
+          return;
+        }
+
+        if (nominalBayar < totalBelanja) {
+          alert("Nominal bayar kurang dari total belanja!");
+          return;
+        }
+
+        alert(
+          "Pembayaran berhasil!\nTotal: " +
+            formatRupiah(totalBelanja) +
+            "\nBayar: " +
+            formatRupiah(nominalBayar) +
+            "\nKembalian: " +
+            formatRupiah(nominalBayar - totalBelanja)
+        );
+
+        // Close modal
+        const modal = bootstrap.Modal.getInstance(
+          document.getElementById("modalPembayaran")
+        );
+        modal.hide();
       }
     </script>
   </body>

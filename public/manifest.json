@@ -1,0 +1,18 @@
+{
+  "name": "BAKSO RUDY",
+  "short_name": "BAKSO RUDY",
+  "start_url": "/index.php",
+  "background_color": "#fff",
+  "description": "Presensi Berbasis Web",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#00582B",
+  "icons": [
+    {
+      "src": "assets/icon/lc_icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

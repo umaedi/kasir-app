@@ -7,8 +7,27 @@
     <meta name="author" content="Your Company">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+     <meta
+      name="description"
+      content="Bakso Rudy - Semangkuk kehangatan dari Bakso Rudy! Sempurna untuk hari yang butuh penyemangat"
+    />
+
+    <!-- Open Graph Meta Tags -->
+    <meta
+      property="og:title"
+      content="Bakso Rudy - Semangkuk kehangatan dari Bakso Rudy! Sempurna untuk hari yang butuh penyemangat"
+    />
+    <meta
+      property="og:description"
+      content="Bakso Rudy - Semangkuk kehangatan dari Bakso Rudy! Sempurna untuk hari yang butuh penyemangat"
+    />
+    <meta property="og:image" content="{{ asset('assets/images/og_image.png') }}" />
+    <meta property="og:type" content="website" />
     <title>Aplikasi Kasir POS</title>
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.png" />
     <!-- Bootstrap 5 CSS -->
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
@@ -496,16 +515,6 @@
             <!-- Quick Amount Buttons -->
             <div class="row g-2 mb-3">
               <div class="col-4">
-                <button class="nominal-btn w-100" onclick="setNominal(2000)">
-                  2.000
-                </button>
-              </div>
-              <div class="col-4">
-                <button class="nominal-btn w-100" onclick="setNominal(5000)">
-                  5.000
-                </button>
-              </div>
-              <div class="col-4">
                 <button class="nominal-btn w-100" onclick="setNominal(10000)">
                   10.000
                 </button>
@@ -525,13 +534,23 @@
                   100.000
                 </button>
               </div>
+              <div class="col-4">
+                <button class="nominal-btn w-100" onclick="setNominal(150000)">
+                  150.000
+                </button>
+              </div>
+              <div class="col-4">
+                <button class="nominal-btn w-100" onclick="setNominal(200000)">
+                  200.000
+                </button>
+              </div>
             </div>
 
             <!-- Metode Pembayaran -->
             <div class="mb-3">
               <label class="form-label">Metode Pembayaran</label>
               <select class="form-select" id="paymentMethod">
-                <option selected>Pilih metode pembayaran</option>
+                <option selected value="tunai">Pilih metode pembayaran</option>
                 <option value="tunai">Tunai</option>
                 <option value="debit">Kartu Debit</option>
                 <option value="kredit">Kartu Kredit</option>

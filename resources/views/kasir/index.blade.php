@@ -724,7 +724,7 @@
               // printerStatus.innerHTML = `<i class="bi bi-printer me-1"></i> Printer Connected`;
               // printerStatus.className = `printer-status bg-primary text-white`;
               if (connectBtn) {
-                  connectBtn.innerHTML = `<i class="bi bi-printer me-2></i>Printer Ready`;
+                  connectBtn.innerHTML = `<i class="bi bi-printer me-2"></i>Printer Ready`;
                   connectBtn.classList.remove('btn-outline-primary');
                   connectBtn.classList.add('btn-success');
               }

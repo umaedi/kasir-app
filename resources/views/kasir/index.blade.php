@@ -240,7 +240,6 @@
       .info-card {
         background: #f8f9fa;
         border-radius: 12px;
-        padding: 15px;
         text-align: center;
         margin-bottom: 15px;
       }
@@ -454,13 +453,13 @@
               <div class="col-md-6">
                 <div class="info-card total-belanja">
                   <h5>Total Belanja</h5>
-                  <h3 id="totalBelanjaDisplay">Rp 0</h3>
+                  <h3 class="fw-bold" id="totalBelanjaDisplay">Rp 0</h3>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="info-card kembalian">
                   <h5>Kembalian</h5>
-                  <h3 id="kembalianAmount">Rp 0</h3>
+                  <h3 class="fw-bold" id="kembalianAmount">Rp 0</h3>
                 </div>
               </div>
             </div>

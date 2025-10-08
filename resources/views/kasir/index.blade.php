@@ -1033,26 +1033,33 @@
           }
 
           cartItems.innerHTML = cart.map((item) => `
-              <div class="cart-item">
-                  <div class="d-flex justify-content-between align-items-center">
-                      <div>
-                          <h6 class="mb-1">${item.name}</h6>
-                          <small class="text-muted">${formatCurrency(item.price)} each</small>
-                      </div>
-                      <div class="d-flex align-items-center gap-2">
-                          <button class="btn btn-sm btn-outline-danger" onclick="updateQuantity('${item.id}', -1)">-</button>
-                          <span class="fw-bold">${item.quantity}</span>
-                          <button class="btn btn-sm btn-outline-success" onclick="updateQuantity('${item.id}', 1)">+</button>
-                      </div>
+          <div class="cart-item border rounded p-2 mb-2 shadow-sm bg-white">
+            <div class="d-flex align-items-center gap-3">
+              <img 
+                src="${window.location.origin}/assets/images/${item.image}" 
+                alt="${item.name}"
+                style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;"
+              />
+              <div class="flex-grow-1">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h6 class="mb-0 text-truncate" style="max-width: 150px;">${item.name}</h6>
+                  <span class="fw-bold text-success">${formatCurrency(item.price * item.quantity)}</span>
+                </div>
+                <div class="d-flex align-items-center justify-content-between mt-2">
+                  <div class="d-flex align-items-center gap-2">
+                    <button class="btn btn-sm btn-outline-danger px-2 py-0" onclick="updateQuantity('${item.id}', -1)">-</button>
+                    <span class="fw-bold">${item.quantity}</span>
+                    <button class="btn btn-sm btn-outline-success px-2 py-0" onclick="updateQuantity('${item.id}', 1)">+</button>
                   </div>
-                  <div class="d-flex justify-content-between align-items-center mt-2">
-                      <span class="fw-bold">${formatCurrency(item.price * item.quantity)}</span>
-                      <button class="btn btn-sm btn-outline-danger" onclick="removeFromCart('${item.id}')">
-                          <i class="bi bi-trash"></i>
-                      </button>
-                  </div>
+                  <button class="btn btn-sm btn-outline-danger px-2 py-0" onclick="removeFromCart('${item.id}')">
+                    <i class="bi bi-trash"></i>
+                  </button>
+                </div>
               </div>
-          `).join("");
+            </div>
+          </div>
+        `).join("");
+
 
           const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
           totalPrice.textContent = formatCurrency(total);

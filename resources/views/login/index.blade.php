@@ -4,9 +4,25 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{ url('/favicon.png') }}">
  <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.png" />
+    <link rel="icon" type="image/x-icon" href="{{ url('/favicon.png') }}" />
+    <meta
+      name="description"
+      content="Bakso Rudy - Semangkuk kehangatan dari Bakso Rudy! Sempurna untuk hari yang butuh penyemangat"
+    />
+
+    <!-- Open Graph Meta Tags -->
+    <meta
+      property="og:title"
+      content="Bakso Rudy - Semangkuk kehangatan dari Bakso Rudy! Sempurna untuk hari yang butuh penyemangat"
+    />
+    <meta
+      property="og:description"
+      content="Bakso Rudy - Semangkuk kehangatan dari Bakso Rudy! Sempurna untuk hari yang butuh penyemangat"
+    />
+    <meta property="og:image" content="{{ asset('assets/images/og_image.png') }}" />
+    <meta property="og:type" content="website" />
   <title>
     Login 
   </title>

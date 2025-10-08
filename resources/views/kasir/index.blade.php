@@ -8,7 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-     <meta
+      <link rel="apple-touch-icon" sizes="76x76" href="{{ url('/favicon.png') }}">
+ <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ url('/favicon.png') }}" />
+    <meta
       name="description"
       content="Bakso Rudy - Semangkuk kehangatan dari Bakso Rudy! Sempurna untuk hari yang butuh penyemangat"
     />

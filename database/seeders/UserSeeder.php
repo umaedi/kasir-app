@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Administrator',
                 'whatsapp' => '6285741492045',
-                'email' => 'admin@tokokita.com',
+                'email' => 'admin@baksorudy.com',
                 'password' => Hash::make('password123'),
                 'role' => 'admin',
                 'alamat' => 'Jl. Administrasi No. 1, Jakarta',
@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Kasir Utama',
                 'whatsapp' => '6285741492046',
-                'email' => 'kasir@tokokita.com',
+                'email' => 'kasir@baksorudy.com',
                 'password' => Hash::make('password123'),
                 'role' => 'kasir',
                 'alamat' => 'Jl. Kasir No. 1, Jakarta',
@@ -38,7 +38,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Manajer Toko',
                 'whatsapp' => '6281234567892',
-                'email' => 'manajer@tokokita.com',
+                'email' => 'manajer@baksorudy.com',
                 'password' => Hash::make('password123'),
                 'role' => 'manajer',
                 'alamat' => 'Jl. Manajemen No. 1, Jakarta',
@@ -48,7 +48,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Kasir 2',
                 'whatsapp' => '6281234567893',
-                'email' => 'kasir2@tokokita.com',
+                'email' => 'kasir2@baksorudy.com',
                 'password' => Hash::make('password123'),
                 'role' => 'kasir',
                 'alamat' => 'Jl. Kasir No. 2, Jakarta',

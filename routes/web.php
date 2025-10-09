@@ -10,14 +10,14 @@ Route::controller(AuthController::class)->group(function() {
 });
 
 //route for kasir
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'role:kasir,admin'])->group(function () {
     Route::get('/kasir', KasirController::class)->name('web.kasir');
 
     //route for transactions
-    Route::apiResource('transactions', TransactionController::class);
+    // Route::apiResource('transactions', TransactionController::class);
     Route::post('/transactions/batch', [TransactionController::class, 'storeBatch']);
-    Route::get('/transactions/report/daily', [TransactionController::class, 'dailyReport']);
-    Route::get('/transactions/statistics', [TransactionController::class, 'statistics']);
+    // Route::get('/transactions/report/daily', [TransactionController::class, 'dailyReport']);
+    // Route::get('/transactions/statistics', [TransactionController::class, 'statistics']);
 });
 
 //route for change language

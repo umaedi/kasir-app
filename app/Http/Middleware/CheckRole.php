@@ -16,17 +16,19 @@ class CheckRole
     public function handle(Request $request, Closure $next, string $role): Response
     {
         if (!$request->user()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Unauthenticated.',
-            ], 401);
+            return redirect('/');
         }
 
-        if (!$request->user()->hasRole($role)) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Unauthorized. Role tidak memenuhi.',
-            ], 403);
+        $user = $request->user();
+
+        // Izinkan admin mengakses semua route
+        if ($user->role === 'admin') {
+            return $next($request);
+        }
+
+        // Jika bukan admin, cek apakah rolenya sesuai
+        if ($user->role !== $role) {
+            abort(403, 'Unauthorized. Role tidak memenuhi.');
         }
 
         return $next($request);

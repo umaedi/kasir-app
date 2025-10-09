@@ -58,6 +58,11 @@ class User extends Authenticatable
         return $query->where('is_active', true);
     }
 
+    public function hasRole(string $role): bool
+    {
+        return $this->role === $role;
+    }
+
     /**
      * Scope a query to only include users with specific role.
      */

@@ -25,8 +25,13 @@ class AuthController
             // Regenerate session untuk mencegah Session Fixation Attack
             $request->session()->regenerate();
 
-            // Login berhasil, arahkan ke dashboard
-            return redirect()->intended('/kasir')->with('success', 'Selamat datang! Anda berhasil login.');
+            if(Auth::user()->role === 'admin') {
+                // Login berhasil, arahkan ke dashboard
+                return redirect()->intended('/cms/dashboard')->with('success', 'Selamat datang! Anda berhasil login.');
+            }else {
+                // Login berhasil, arahkan ke dashboard
+                return redirect()->intended('/kasir')->with('success', 'Selamat datang! Anda berhasil login.');
+            }
         }
 
         return back()->with('error', 'Email atau Password salah.')->onlyInput('email');

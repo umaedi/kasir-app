@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Admin\ExportController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('auth')->group(function() {
+Route::middleware(['auth', 'role:admin'])->group(function() {
     Route::prefix('cms')->group(function() {
         Route::get('/dashboard', CMS\DashboardController::class)->name('cms.dashbord');
 

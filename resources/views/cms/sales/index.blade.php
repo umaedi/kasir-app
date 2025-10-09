@@ -74,11 +74,6 @@
             border-radius: 8px;
             margin-bottom: 20px;
         }
-
-        .table-responsive {
-            border-radius: 8px;
-            overflow: hidden;
-        }
     </style>
 @endpush
 @section('content')

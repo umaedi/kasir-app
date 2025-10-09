@@ -376,7 +376,7 @@
             <div
               id="cartItems"
               class="mb-4"
-              style="max-height: 400px; overflow-y: auto"
+              style="max-height: 380px; overflow-y: auto"
             >
               {{-- <p class="text-muted text-center">Keranjang kosong</p> --}}
             </div>

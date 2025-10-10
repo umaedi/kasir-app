@@ -11,6 +11,7 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
 
         //route for transactions
         Route::controller(CMS\TransactionController::class)->group(function() {
+            Route::get('/transactions', 'index')->name('cms.transactions');
             Route::delete('/transactions/{id}', 'destroy')->name('cms.destroy');
         });
         
@@ -18,5 +19,15 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
         Route::get('/reports/sales-by-category', [CMS\SalesReportController::class, 'salesByCategory']);
         Route::get('/reports/products/{productId}/sales-trend', [CMS\SalesReportController::class, 'productSalesTrend']);
         Route::get('/reports/top-selling-products', [CMS\SalesReportController::class, 'topSellingProducts']);
+
+        //route for finance
+        Route::controller(CMS\FinanceController::class)->group(function() {
+            Route::get('/finance', 'index')->name('cms.finance');
+        });
+
+        //route for laporan
+        Route::controller(CMS\LaporanController::class)->group(function() {
+            Route::post('/laporan/store', 'store')->name('cms.laporan.store');
+        });
     });
 });

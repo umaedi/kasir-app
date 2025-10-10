@@ -29,10 +29,10 @@
                 <div data-i18n="Basic">{{ __('cms.sales_sidebar') }}</div>
             </a>
         </li>
-        <li class="menu-item {{ Request::is('wms/registration') ? 'active' : '' }}">
-            <a href="#" class="menu-link">
+        <li class="menu-item {{ Request::is('cms/finance') ? 'active' : '' }}">
+            <a href="{{ route('cms.finance') }}" class="menu-link">
                 <i class="menu-icon icon-base bx bx-receipt"></i>
-                <div data-i18n="Basic">{{ __('cms.transactions') }}</div>
+                <div data-i18n="Basic">Laporan keuangan</div>
             </a>
         </li>
     </ul>

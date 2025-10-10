@@ -791,8 +791,8 @@
               showToast('Struk berhasil dicetak', 'success');
               
               // Tutup modal setelah print berhasil
-              const modal = bootstrap.Modal.getInstance(document.getElementById('successModal'));
-              if (modal) modal.hide();
+              // const modal = bootstrap.Modal.getInstance(document.getElementById('successModal'));
+              // if (modal) modal.hide();
               
           } catch (error) {
               console.error('Gagal mencetak struk:', error);

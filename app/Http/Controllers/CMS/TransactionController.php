@@ -18,43 +18,47 @@ class TransactionController extends Controller
      */
     public function index(Request $request)
     {
-        try {
-            $query = Transaction::query();
-            
-            // Filter by date range
-            if ($request->has('start_date') && $request->has('end_date')) {
-                $startDate = Carbon::parse($request->start_date)->startOfDay();
-                $endDate = Carbon::parse($request->end_date)->endOfDay();
-                $query->betweenDates($startDate, $endDate);
-            }
-            
-            // Filter by specific date
-            if ($request->has('date')) {
-                $query->onDate(Carbon::parse($request->date));
-            }
-            
-            // Search by transaction ID
-            if ($request->has('search')) {
-                $query->where('transaction_id', 'like', '%' . $request->search . '%');
-            }
-            
-            // Order by latest first
-            $transactions = $query->orderBy('transaction_date', 'desc')
-                                ->paginate($request->get('per_page', 15));
-            
-            return response()->json([
-                'success' => true,
-                'data' => $transactions,
-                'message' => 'Data transaksi berhasil diambil.'
-            ]);
-            
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Gagal mengambil data transaksi.',
-                'error' => $e->getMessage()
-            ], 500);
+        if($request->ajax()) {
+            dd('ok');
         }
+        return view('cms.transactions.index', ['title'  => 'CMS | Transactions']);
+        // try {
+        //     $query = Transaction::query();
+            
+        //     // Filter by date range
+        //     if ($request->has('start_date') && $request->has('end_date')) {
+        //         $startDate = Carbon::parse($request->start_date)->startOfDay();
+        //         $endDate = Carbon::parse($request->end_date)->endOfDay();
+        //         $query->betweenDates($startDate, $endDate);
+        //     }
+            
+        //     // Filter by specific date
+        //     if ($request->has('date')) {
+        //         $query->onDate(Carbon::parse($request->date));
+        //     }
+            
+        //     // Search by transaction ID
+        //     if ($request->has('search')) {
+        //         $query->where('transaction_id', 'like', '%' . $request->search . '%');
+        //     }
+            
+        //     // Order by latest first
+        //     $transactions = $query->orderBy('transaction_date', 'desc')
+        //                         ->paginate($request->get('per_page', 15));
+            
+        //     return response()->json([
+        //         'success' => true,
+        //         'data' => $transactions,
+        //         'message' => 'Data transaksi berhasil diambil.'
+        //     ]);
+            
+        // } catch (\Exception $e) {
+        //     return response()->json([
+        //         'success' => false,
+        //         'message' => 'Gagal mengambil data transaksi.',
+        //         'error' => $e->getMessage()
+        //     ], 500);
+        // }
     }
 
     /**
